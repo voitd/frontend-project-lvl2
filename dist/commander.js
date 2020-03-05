@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+"use strict";
+
+const program = require('commander');
+
+program.version('0.0.1').command('Usage: gendiff [options]').description('Compares two configuration files and shows a difference.').option(' -V, --version        output the version number').option(' -h, --help           output usage information');
+program.on('--help', () => {
+  console.log('');
+  console.log('Examples:');
+  console.log('  $ custom-help --help');
+  console.log('  $ custom-help -h');
+});
+program.parse(process.argv);
+console.log('stuff');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9jb21tYW5kZXIuanMiXSwibmFtZXMiOlsicHJvZ3JhbSIsInJlcXVpcmUiLCJ2ZXJzaW9uIiwiY29tbWFuZCIsImRlc2NyaXB0aW9uIiwib3B0aW9uIiwib24iLCJjb25zb2xlIiwibG9nIiwicGFyc2UiLCJwcm9jZXNzIiwiYXJndiJdLCJtYXBwaW5ncyI6IkFBQUE7OztBQUNBLE1BQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFDLFdBQUQsQ0FBdkI7O0FBRUFELE9BQU8sQ0FDSkUsT0FESCxDQUNXLE9BRFgsRUFFR0MsT0FGSCxDQUVXLDBCQUZYLEVBR0dDLFdBSEgsQ0FHZSwwREFIZixFQUlHQyxNQUpILENBSVUsaURBSlYsRUFLR0EsTUFMSCxDQUtVLGdEQUxWO0FBT0FMLE9BQU8sQ0FBQ00sRUFBUixDQUFXLFFBQVgsRUFBcUIsTUFBTTtBQUN6QkMsRUFBQUEsT0FBTyxDQUFDQyxHQUFSLENBQVksRUFBWjtBQUNBRCxFQUFBQSxPQUFPLENBQUNDLEdBQVIsQ0FBWSxXQUFaO0FBQ0FELEVBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLHdCQUFaO0FBQ0FELEVBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLG9CQUFaO0FBQ0QsQ0FMRDtBQU9BUixPQUFPLENBQUNTLEtBQVIsQ0FBY0MsT0FBTyxDQUFDQyxJQUF0QjtBQUVBSixPQUFPLENBQUNDLEdBQVIsQ0FBWSxPQUFaIiwic291cmNlc0NvbnRlbnQiOlsiIyEvdXNyL2Jpbi9lbnYgbm9kZVxuY29uc3QgcHJvZ3JhbSA9IHJlcXVpcmUoJ2NvbW1hbmRlcicpO1xuXG5wcm9ncmFtXG4gIC52ZXJzaW9uKCcwLjAuMScpXG4gIC5jb21tYW5kKCdVc2FnZTogZ2VuZGlmZiBbb3B0aW9uc10nKVxuICAuZGVzY3JpcHRpb24oJ0NvbXBhcmVzIHR3byBjb25maWd1cmF0aW9uIGZpbGVzIGFuZCBzaG93cyBhIGRpZmZlcmVuY2UuJylcbiAgLm9wdGlvbignIC1WLCAtLXZlcnNpb24gICAgICAgIG91dHB1dCB0aGUgdmVyc2lvbiBudW1iZXInKVxuICAub3B0aW9uKCcgLWgsIC0taGVscCAgICAgICAgICAgb3V0cHV0IHVzYWdlIGluZm9ybWF0aW9uJyk7XG5cbnByb2dyYW0ub24oJy0taGVscCcsICgpID0+IHtcbiAgY29uc29sZS5sb2coJycpO1xuICBjb25zb2xlLmxvZygnRXhhbXBsZXM6Jyk7XG4gIGNvbnNvbGUubG9nKCcgICQgY3VzdG9tLWhlbHAgLS1oZWxwJyk7XG4gIGNvbnNvbGUubG9nKCcgICQgY3VzdG9tLWhlbHAgLWgnKTtcbn0pO1xuXG5wcm9ncmFtLnBhcnNlKHByb2Nlc3MuYXJndik7XG5cbmNvbnNvbGUubG9nKCdzdHVmZicpO1xuIl19
