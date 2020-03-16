@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import fs from 'fs';
-import path from 'path'
+import path from 'path';
 
 const getFile = (filename) => {
   const pathName = path.resolve(process.cwd(), filename);
@@ -17,7 +17,7 @@ const genDiff = (firstConfig, secondConfig) => {
   const arr = ['{'];
   const getString = keys.reduce((acc, key) => {
     let prefix = _.has(after, key) ? '+' : '-';
-    let resultString = (prefix, key, obj) => `  ${prefix} ${key}: ${obj[key]}`;
+    const resultString = (pref, objKey, obj) => `  ${pref} ${objKey}: ${obj[objKey]}`;
 
     if (_.has(after, key) && _.has(before, key)) {
       if (after[key] !== before[key]) {
