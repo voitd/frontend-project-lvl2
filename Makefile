@@ -21,7 +21,7 @@ test:
 	npm test
 
 test-coverage:
-	npm test -- --coverage --coverageReporters=lcov
+	npm test -- --coverage
 
 help:
 	npx babel-node ./src/bin/gendiff.js -h
