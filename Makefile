@@ -18,10 +18,10 @@ build:
 	npm run build
 
 test:
-	npm test --passWithNoTests
+	npm test
 
 test-coverage:
-	npm test -- --coverage 
+	npm test -- --coverage
 help:
 	npx babel-node ./src/bin/gendiff.js -h
 
