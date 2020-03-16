@@ -15,6 +15,12 @@ build:
 	rm -rf dist
 	npm run build
 
+test:
+	npm test
+
+test-coverage:
+	npm test -- --coverage
+
 help:
 	npx babel-node ./src/bin/gendiff.js -h
 
