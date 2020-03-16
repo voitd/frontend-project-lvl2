@@ -1,20 +1,34 @@
-import commander from 'commander';
+import _ from 'lodash';
+import fs from 'fs';
+import path from 'path'
 
-const program = new commander.Command();
-program
-  .version('0.0.2')
-  .description('Compares two configuration files and shows a difference.')
-  .command('Usage: gendiff')
-  .option(' -V, --version        output the version number')
-  .option(' -h, --help           output usage information');
+const getFile = (filename) => {
+  const pathName = path.resolve(process.cwd(), filename);
+  const readFile = fs.readFileSync(pathName);
+  const parseFile = JSON.parse(readFile);
+  return parseFile;
+};
 
-program.on('--help', () => {
-  console.log('');
-  console.log('Examples:');
-  console.log('  $ gendiff --help');
-  console.log('  $ gendiff -h');
-});
+const genDiff = (firstConfig, secondConfig) => {
+  const before = getFile(firstConfig);
+  const after = getFile(secondConfig);
+  const tempObj = { ...before, ...after };
+  const keys = _.keys(tempObj);
+  const arr = ['{'];
+  const getString = keys.reduce((acc, key) => {
+    let prefix = _.has(after, key) ? '+' : '-';
+    let resultString = (prefix, key, obj) => `  ${prefix} ${key}: ${obj[key]}`;
 
-program.parse(process.argv);
+    if (_.has(after, key) && _.has(before, key)) {
+      if (after[key] !== before[key]) {
+        prefix = '-';
+        acc.push(resultString('+', key, before));
+      }
+      if (after[key] === before[key]) prefix = ' ';
+    }
+    return [...acc, resultString(prefix, key, tempObj)];
+  }, arr);
+  return `${getString.join('\n')}\n}`;
+};
 
-export default () => program;
+export default genDiff;
