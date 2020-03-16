@@ -18,7 +18,7 @@ build:
 	npm run build
 
 test:
-	npm test
+	npm test --passWithNoTests
 
 test-coverage:
 	npm test -- --coverage --coverageReporters=lcov
