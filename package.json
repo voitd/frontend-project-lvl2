@@ -3,13 +3,14 @@
   "version": "0.0.1",
   "description": "Compares two configuration files and shows a difference.",
   "main": "/src/index.js",
-  "type": "module",
+  "files": [
+    "dist"
+  ],
   "bin": {
-    "gendiff": "/bin/gendiff.js"
+    "gendiff": "dist/bin/gendiff.js"
   },
   "scripts": {
     "test": "jest",
-    "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
@@ -43,9 +44,11 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.1",
     "jest": "^25.1.0",
-    "jest-cli": "^25.1.0"
+    "jest-cli": "^25.1.0",
+    "lodash": "^4.17.15"
   },
   "dependencies": {
-    "commander": "^4.1.1"
+    "commander": "^4.1.1",
+    "core-util-is": "^1.0.2"
   }
 }
