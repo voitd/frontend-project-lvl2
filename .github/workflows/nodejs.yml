@@ -31,7 +31,7 @@ jobs:
         run: |
           make lint
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.2.4
+        uses: marsam/codeclimate-action@master
         env:
           CC_TEST_REPORTER_ID: 54bf158710ddda443bfb8d2dc83ec7ea1afbd9571916c81639cdaa577fde9c8b
         with:
