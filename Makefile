@@ -27,4 +27,4 @@ help:
 	npx babel-node ./src/bin/gendiff.js -h
 
 compare:
-	npx babel-node ./src/bin/gendiff.js ./fixtures/before.json ./fixtures/after.json
+	npx babel-node ./src/bin/gendiff.js ./__fixtures__/before.json ./__fixtures__/after.json

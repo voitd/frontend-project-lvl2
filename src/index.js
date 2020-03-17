@@ -5,7 +5,7 @@ import path from 'path';
 const getFile = (filename) => {
   const pathName = path.resolve(process.cwd(), filename);
   const readFile = fs.readFileSync(pathName);
-  const parseFile = JSON.parse(readFile);
+  const parseFile = JSON.parse(readFile, 'utf8');
   return parseFile;
 };
 
@@ -17,16 +17,16 @@ const genDiff = (firstConfig, secondConfig) => {
   const arr = ['{'];
   const getString = keys.reduce((acc, key) => {
     let prefix = _.has(after, key) ? '+' : '-';
-    const resultString = (pref, objKey, obj) => `  ${pref} ${objKey}: ${obj[objKey]}`;
+    const resultString = (pref, obj) => `  ${pref} ${key}: ${obj[key]}`;
 
     if (_.has(after, key) && _.has(before, key)) {
       if (after[key] !== before[key]) {
         prefix = '-';
-        acc.push(resultString('+', key, before));
+        acc.push(resultString('+', before));
       }
       if (after[key] === before[key]) prefix = ' ';
     }
-    return [...acc, resultString(prefix, key, tempObj)];
+    return [...acc, resultString(prefix, tempObj)];
   }, arr);
   return `${getString.join('\n')}\n}`;
 };
