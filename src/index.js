@@ -1,17 +1,9 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
-
-const getFile = (filename) => {
-  const pathName = path.resolve(process.cwd(), filename);
-  const readFile = fs.readFileSync(pathName);
-  const parseFile = JSON.parse(readFile, 'utf8');
-  return parseFile;
-};
+import parsers from './parsers.js';
 
 const genDiff = (firstConfig, secondConfig) => {
-  const before = getFile(firstConfig);
-  const after = getFile(secondConfig);
+  const before = parsers(firstConfig);
+  const after = parsers(secondConfig);
   const tempObj = { ...before, ...after };
   const keys = _.keys(tempObj);
   const arr = ['{'];
