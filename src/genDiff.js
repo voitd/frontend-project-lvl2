@@ -38,26 +38,27 @@ export const parse = (before, after) => {
   });
 };
 
-export const render = (ast, lvl = 0) => {
-  const indent = (tab) => ' '.repeat(lvl + tab);
+export const render = (ast, depth = 0) => {
+  const indent = (tabs) => ' '.repeat(tabs * 2);
 
-  const getString = (value, depth) => {
+  const getString = (value, repeat) => {
     if (!_.isObject(value)) return value;
-    return `{\n${indent(1)}${_.keys(value)
-      .map((key) => `${indent(1)}  ${key}: ${getString(value[key], depth)}`)
-      .join('\n')}\n${indent(1)}}`;
+    return `{\n${_.keys(value)
+      .map((key) => `${indent(repeat + 3)}${key}: ${value[key]}`)
+      .join('\n')}\n${indent(depth + 2)}}`;
   };
 
   const renderString = {
-    added: (node) => `${indent(1)} + ${node.key}: ${getString(node.value, lvl + 1)}`,
-    deleted: (node) => `${indent(1)} - ${node.key}: ${getString(node.value, lvl + 1)}`,
-    unchanged: (node) => `${indent(1)}   ${node.key}: ${getString(node.value, lvl + 1)}`,
-    changed: (node) => `${indent(1)} + ${node.key}: ${getString(node.afterValue, lvl + 1)}\n${indent(
-      2,
-    )} - ${node.key}: ${getString(node.beforeValue, lvl + 1)}`,
-    children: (node) => `${indent(1)}${node.key}: ${render(node.children)}`,
+    added: (node) => `${indent(depth)}+ ${node.key}: ${getString(node.value, depth)}`,
+    deleted: (node) => `${indent(depth)}- ${node.key}: ${getString(node.value, depth)}`,
+    unchanged: (node) => `${indent(depth)}  ${node.key}: ${getString(node.value, depth)}`,
+    changed: (node) => `${indent(depth)}+ ${node.key}: ${getString(node.afterValue, depth)}\n${indent(depth)}- ${node.key}: ${getString(node.beforeValue, depth)}`,
+    children: (node) => `${indent(depth)}  ${node.key}: { ${render(node.children, depth + 1)}${indent(depth + 1)}}`,
+
   };
 
-  const renderResult = (tree) => tree.map((node) => renderString[node.type](node)).join(`\n${indent(1)}`);
-  return `{\n${indent(1)}${renderResult(ast)}\n${indent(0)}}`;
+  const renderResult = (tree) => tree
+    .map((node) => renderString[node.type](node))
+    .join('\n');
+  return ['{', renderResult(ast), '}'].join('\n');
 };
