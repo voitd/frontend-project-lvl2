@@ -3,7 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const getData = (filename) => {
+const getDataFromFile = (filename) => {
   const configPath = path.resolve(process.cwd(), filename);
   const data = fs.readFileSync(configPath, 'utf-8');
   const ext = path.extname(configPath);
@@ -15,4 +15,4 @@ const getData = (filename) => {
   const readData = file[ext];
   return readData(data);
 };
-export default getData;
+export default getDataFromFile;
