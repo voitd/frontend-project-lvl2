@@ -1,11 +1,10 @@
 
-import getDataFromFile from './getDataFromFile.js';
-import { makeAST, printAST } from './formatters/render-tree.js';
+import getDataFromFile from './parsers';
+import render from './formatters';
 
-const genDiff = (firstConfig, secondConfig) => {
+const genDiff = (firstConfig, secondConfig, format = 'tree') => {
   const before = getDataFromFile(firstConfig);
   const after = getDataFromFile(secondConfig);
-  const ast = makeAST(before, after);
-  return printAST(ast);
+  return render(before, after, format);
 };
 export default genDiff;

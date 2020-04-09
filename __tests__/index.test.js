@@ -6,6 +6,7 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 const resultPlain = readFile('result-plain');
 const resultJson = readFile('result-json');
+const resultTree = readFile('result-tree');
 const before = './__fixtures__/before';
 const after = './__fixtures__/after';
 describe('Testing output function', () => {
@@ -21,15 +22,15 @@ describe('Testing output function', () => {
 });
 describe('Testing output equals', () => {
   test('Should be printed plain', () => {
-    expect(genDiff(`${before}.plain.json`, `${after}.plain.json`)).toEqual(resultPlain);
+    expect(genDiff(`${before}.json`, `${after}.json`, 'plain')).toEqual(resultPlain);
   });
   test('Should be JSON printed correct', () => {
-    expect(genDiff(`${before}.json`, `${after}.json`)).toEqual(resultJson);
+    expect(genDiff(`${before}.json`, `${after}.json`, 'json')).toEqual(resultJson);
   });
   test('Should be YAML printed correct', () => {
-    expect(genDiff(`${before}.yml`, `${after}.yml`)).toEqual(resultPlain);
+    expect(genDiff(`${before}.yml`, `${after}.yml`)).toEqual(resultTree);
   });
   test('Should be INI printed correct', () => {
-    expect(genDiff(`${before}.ini`, `${after}.ini`)).toEqual(resultPlain);
+    expect(genDiff(`${before}.ini`, `${after}.ini`)).toEqual(resultTree);
   });
 });
