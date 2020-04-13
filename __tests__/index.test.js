@@ -4,33 +4,28 @@ import genDiff from '../src';
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-const resultPlain = readFile('result-plain');
-const resultJson = readFile('result-json');
-const resultTree = readFile('result-tree');
-const before = './__fixtures__/before';
-const after = './__fixtures__/after';
-describe('Testing output function', () => {
-  test('Should JSON be render as string', () => {
-    expect(typeof genDiff(`${before}.json`, `${after}.json`)).toBe('string');
-  });
-  test('Should YAML be render as string', () => {
-    expect(typeof genDiff(`${before}.yml`, `${after}.yml`)).toBe('string');
-  });
-  test('Should INI be render as string', () => {
-    expect(typeof genDiff(`${before}.ini`, `${after}.ini`)).toBe('string');
-  });
+
+const resultFiles = {
+  plain: 'result-plain',
+  json: 'result-json',
+  tree: 'result-tree',
+};
+
+describe(' Testing output equals', () => {
+  test.each`
+    config1         | config2           | format     
+   ${'before.json'} | ${'after.json'}   | ${'plain'} 
+   ${'before.json'} | ${'after.json'}   | ${'json'}  
+   ${'before.yml'}  | ${'after.yml'}    | ${'tree'} 
+   ${'before.ini'}  | ${'after.ini'}    | ${'tree'}  
+`('compare configs $config1 > $config2, should be $format-like formats', ({
+  config1,
+  config2,
+  format,
+}) => {
+  const before = getFixturePath(config1);
+  const after = getFixturePath(config2);
+  const expected = readFile(resultFiles[format]);
+  expect(genDiff(before, after, format)).toBe(expected);
 });
-describe('Testing output equals', () => {
-  test('Should be printed plain', () => {
-    expect(genDiff(`${before}.json`, `${after}.json`, 'plain')).toEqual(resultPlain);
-  });
-  test('Should be JSON printed correct', () => {
-    expect(genDiff(`${before}.json`, `${after}.json`, 'json')).toEqual(resultJson);
-  });
-  test('Should be YAML printed correct', () => {
-    expect(genDiff(`${before}.yml`, `${after}.yml`)).toEqual(resultTree);
-  });
-  test('Should be INI printed correct', () => {
-    expect(genDiff(`${before}.ini`, `${after}.ini`)).toEqual(resultTree);
-  });
 });
