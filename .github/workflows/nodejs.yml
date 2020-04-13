@@ -23,8 +23,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           make install
-          make build
-          make test
+          make build 
         env:
           CI: true
       - name: Run linter
@@ -33,7 +32,7 @@ jobs:
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.4.0
         env:
-          CC_TEST_REPORTER_ID: 54bf158710ddda443bfb8d2dc83ec7ea1afbd9571916c81639cdaa577fde9c8b
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make test-coverage
           debug: true
