@@ -7,8 +7,8 @@ import makeAST from './makeAST';
 const getDataFromFile = (filename) => {
   const pathToFile = path.resolve(process.cwd(), filename);
   const data = fs.readFileSync(pathToFile, 'utf-8');
-  const fileExtension = path.extname(pathToFile);
-  return parse(data, fileExtension);
+  const fileType = path.extname(pathToFile).slice(1);
+  return parse(data, fileType);
 };
 
 const genDiff = (firstConfig, secondConfig, format = 'tree') => {

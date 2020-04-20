@@ -2,7 +2,7 @@ import { has, keys, isObject } from 'lodash';
 
 const nodeProperties = [
   {
-    type: 'children',
+    type: 'nested',
     check: (before, after, key) => isObject(before[key]) && isObject(after[key]),
     process: (before, after, fn) => ({ children: fn(before, after) }),
   },
@@ -35,8 +35,8 @@ const makeAST = (before, after) => {
   const getNodeProperties = (key) => nodeProperties.find(({ check }) => check(before, after, key));
   return configKeys.map((key) => {
     const { type, process } = getNodeProperties(key);
-    const value = process(before[key], after[key], makeAST);
-    return { key, type, ...value };
+    const data = process(before[key], after[key], makeAST);
+    return { key, type, ...data };
   });
 };
 export default makeAST;

@@ -9,7 +9,7 @@ const renderPlain = (ast, path = '') => {
     changed: (node) => `Property '${path}${node.key}' was changed from ${stringify(
       node.afterValue,
     )} to ${stringify(node.beforeValue)}`,
-    children: (node) => `${renderPlain(node.children, `${path}${node.key}.`)}`,
+    nested: (node) => `${renderPlain(node.children, `${path}${node.key}.`)}`,
   };
 
   return ast
