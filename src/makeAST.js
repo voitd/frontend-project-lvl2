@@ -1,4 +1,6 @@
-import { has, keys, isObject } from 'lodash';
+import {
+  has, keys, isObject, union,
+} from 'lodash';
 
 const nodeProperties = [
   {
@@ -31,7 +33,7 @@ const nodeProperties = [
 ];
 
 const makeAST = (before, after) => {
-  const configKeys = keys({ ...before, ...after });
+  const configKeys = union(keys(before), keys(after));
   const getNodeProperties = (key) => nodeProperties.find(({ check }) => check(before, after, key));
   return configKeys.map((key) => {
     const { type, process } = getNodeProperties(key);
