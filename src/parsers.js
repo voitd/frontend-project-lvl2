@@ -1,11 +1,11 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const dataTypes = {
+const parserTypes = {
   json: JSON.parse,
   yml: yaml.safeLoad,
   ini: ini.parse,
 };
-const parse = (data, dataType) => dataTypes[dataType](data);
+const parse = (data, dataType) => parserTypes[dataType](data);
 
 export default parse;
