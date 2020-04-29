@@ -37,8 +37,8 @@ const makeAST = (before, after) => {
   const getNodeProperties = (key) => nodeProperties.find(({ check }) => check(before, after, key));
   return configKeys.map((key) => {
     const { type, process } = getNodeProperties(key);
-    const data = process(before[key], after[key], makeAST);
-    return { key, type, ...data };
+    const props = process(before[key], after[key], makeAST);
+    return { key, type, ...props };
   });
 };
 export default makeAST;
