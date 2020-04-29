@@ -1,10 +1,25 @@
-# frontend-project-lvl2
+# gen-diff-cli
 
 [![Actions Status](https://github.com/voitd/frontend-project-lvl2/workflows/GenDiff%20CI/badge.svg)](https://github.com/voitd/frontend-project-lvl2/actions?query=workflow%3A"GenDiff+CI")
 [![Maintainability](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/maintainability)](https://codeclimate.com/github/voitd/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/test_coverage)](https://codeclimate.com/github/voitd/frontend-project-lvl2/test_coverage)
 
-### Install genDiff app:
+## Install genDiff app:
+
+### Setup using npm
+
+```sh
+$ npm install -g gen-diff-cli
+```
+
+```sh
+$ npm install
+```
+
+- program supports input file types: `.yml` `.ini` `.json`
+- and have three output types: `tree` `plain` `json`
+
+Example:
 
 [![asciicast](https://asciinema.org/a/48YNMZLam4Qeo1hCmzTzQGhp8.svg)](https://asciinema.org/a/48YNMZLam4Qeo1hCmzTzQGhp8)
 
