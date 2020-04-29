@@ -1,48 +1,61 @@
-# gen-diff-cli
+# gendiff-cli
 
 [![Actions Status](https://github.com/voitd/frontend-project-lvl2/workflows/GenDiff%20CI/badge.svg)](https://github.com/voitd/frontend-project-lvl2/actions?query=workflow%3A"GenDiff+CI")
 [![Maintainability](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/maintainability)](https://codeclimate.com/github/voitd/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/test_coverage)](https://codeclimate.com/github/voitd/frontend-project-lvl2/test_coverage)
 
-## Install genDiff app:
+# Generator of differences
 
-### Setup using npm
+## :memo: Info:
 
-```sh
-$ npm install -g gen-diff-cli
+> ### Install
+
+`npm i gendiff`
+
+> ### A command line interface utility for finding differences in configuration files.
+
+```
+gendiff -h
+
+Usage: gendiff [options] <firstConfig> <secondConfig>
+
+Compares two configuration files and shows a difference.
+
+Options:
+  -V, --version        output the version number
+  -f, --format [type]  output format: plain, tree, json (default: "tree")
+  -h, --help           output usage information
+
 ```
 
-```sh
-$ npm install
-```
+> ### Features of the utility:
 
 - program supports input file types: `.yml` `.ini` `.json`
 - and have three output types: `tree` `plain` `json`
 
-Example:
+> ## :bulb: Examples:
 
-[![asciicast](https://asciinema.org/a/48YNMZLam4Qeo1hCmzTzQGhp8.svg)](https://asciinema.org/a/48YNMZLam4Qeo1hCmzTzQGhp8)
+`$ gendiff --format tree first-config.json second-config.json`
 
-### How to work:
+<p align="center">
+  <img alt="gendiff --format tree first-config.json second-config.json"  src="https://user-images.githubusercontent.com/60138143/80643490-d7d12680-8a70-11ea-9371-d39239c5ec6d.png">
+</p>
 
-[![asciicast](https://asciinema.org/a/71ldTEqENFCa3yIUWjN6Iu3q0.svg)](https://asciinema.org/a/71ldTEqENFCa3yIUWjN6Iu3q0)
+`$ gendiff --format plain first-config.json second-config.json`
 
-### Render as plain object
+ <p align="center">
+  <img alt="gen
+diff
+ --format plain first-config.json second-config.json"  src="https://user-images.githubusercontent.com/60138143/80643690-2bdc0b00-8a71-11ea-9e2c-a026173f351b.png">
+</p>
 
-[![asciicast](https://asciinema.org/a/MQ9DpcovgD8HSzNlRDu9UMrFg.svg)](https://asciinema.org/a/MQ9DpcovgD8HSzNlRDu9UMrFg)
+`$ gendiff --format json first-config.json second-config.json`
 
-### Render as tree
+> ## :hammer: Technologies:
 
-[![asciicast](https://asciinema.org/a/lruWqeRLSE6srd99zgYYDBxEr.svg)](https://asciinema.org/a/lruWqeRLSE6srd99zgYYDBxEr)
-
-### Render as tree with YAML format
-
-[![asciicast](https://asciinema.org/a/1VLGDDbwHesU8zl69pHNFRvuW.svg)](https://asciinema.org/a/1VLGDDbwHesU8zl69pHNFRvuW)
-
-### Render as tree with INI format
-
-[![asciicast](https://asciinema.org/a/eURHyNvwBo3YwfNmQvok55P0A.svg)](https://asciinema.org/a/eURHyNvwBo3YwfNmQvok55P0A)
-
-### Render as text view difference
-
-[![asciicast](https://asciinema.org/a/eZNWa27hEzJCJazdLu2sQUoEK.svg)](https://asciinema.org/a/eZNWa27hEzJCJazdLu2sQUoEK)
+- ES6
+- Node.js
+- Eslint
+- GitHub Actions
+- Npm
+- lodash
