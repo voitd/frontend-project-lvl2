@@ -1,19 +1,23 @@
-# gendiff-cli
+
 
 [![Actions Status](https://github.com/voitd/frontend-project-lvl2/workflows/GenDiff%20CI/badge.svg)](https://github.com/voitd/frontend-project-lvl2/actions?query=workflow%3A"GenDiff+CI")
 [![Maintainability](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/maintainability)](https://codeclimate.com/github/voitd/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bfc1d480366dd4e52f3e/test_coverage)](https://codeclimate.com/github/voitd/frontend-project-lvl2/test_coverage)
 
-# Generator of differences
+# gen-diff-cli
 
-## :memo: Info:
+>A command line interface utility for finding differences in configuration files.
 
-> ### Install
+### 🎛 Features of the utility:
+
+- program supports input file types: `.yml` `.ini` `.json`
+- and have three output types: `tree` `plain` `json`
+
+### 💾 Install
 
 `npm i gendiff`
 
-> ### A command line interface utility for finding differences in configuration files.
-
+### 💻 Usage
 ```
 gendiff -h
 
@@ -28,12 +32,7 @@ Options:
 
 ```
 
-> ### Features of the utility:
-
-- program supports input file types: `.yml` `.ini` `.json`
-- and have three output types: `tree` `plain` `json`
-
-> ## :bulb: Examples:
+## :bulb: Examples:
 
 `$ gendiff --format tree first-config.json second-config.json`
 
@@ -51,7 +50,7 @@ diff
 
 `$ gendiff --format json first-config.json second-config.json`
 
-> ## :hammer: Technologies:
+## :hammer: Technologies:
 
 - ES6
 - Node.js
